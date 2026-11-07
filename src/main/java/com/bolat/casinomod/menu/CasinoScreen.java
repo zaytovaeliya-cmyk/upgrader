@@ -123,8 +123,8 @@ public class CasinoScreen extends AbstractContainerScreen<CasinoMenu> {
 
     // ---------------- animation logic ----------------
     @Override
-    public void tick() {
-        super.tick();
+    public void containerTick() {
+        super.containerTick();
         int round = menu.getRound();
         if (round != seenRound) {
             seenRound = round;
