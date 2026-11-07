@@ -295,13 +295,14 @@ public class CasinoScreen extends AbstractContainerScreen<CasinoMenu> {
 
     @Override
     public boolean mouseClicked(double mx, double my, int button) {
-        if (super.mouseClicked(mx, my, button)) return true;
+        // check the picker FIRST: AbstractContainerScreen.mouseClicked always returns true,
+        // so code placed after super.mouseClicked would never run
         int idx = cellAt(mx, my);
         if (idx >= 0 && button == 0) {
             CasinoNetwork.CHANNEL.sendToServer(new PickPacket(idx));
             return true;
         }
-        return false;
+        return super.mouseClicked(mx, my, button);
     }
 
     @Override
